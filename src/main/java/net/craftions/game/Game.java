@@ -1,5 +1,7 @@
 package net.craftions.game;
 
+import net.craftions.game.gui.MainMenu;
+
 public class Game {
 
     private String name;
@@ -13,7 +15,8 @@ public class Game {
     }
 
     public void start() {
-
+        MainMenu menu = new MainMenu();
+        menu.init();
     }
 
     public String getName() {
