@@ -37,8 +37,8 @@ public class MainMenu extends Screen{
         b0.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
-                Ingame i = new Ingame();
-                i.init();
+                Loading l = new Loading();
+                l.init();
             }
         });
 

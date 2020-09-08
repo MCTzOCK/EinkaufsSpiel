@@ -14,6 +14,7 @@ public class Ingame extends Screen{
         this.f.setUndecorated(true);
         this.f.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.f.requestFocus();
         this.f.setVisible(true);
         super.init();
     }
