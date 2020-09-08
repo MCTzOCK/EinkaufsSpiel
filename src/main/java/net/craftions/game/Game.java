@@ -1,5 +1,6 @@
 package net.craftions.game;
 
+import de.feja111.game.DrPC;
 import net.craftions.game.gui.MainMenu;
 
 public class Game {
@@ -16,6 +17,7 @@ public class Game {
 
     public void start() {
         MainMenu menu = new MainMenu();
+        DrPC.start();
         menu.init();
     }
 

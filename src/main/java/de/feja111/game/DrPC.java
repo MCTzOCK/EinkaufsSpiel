@@ -1,5 +1,6 @@
 package de.feja111.game;
 
+import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
 public class DrPC {
@@ -7,6 +8,7 @@ public class DrPC {
 
     public static void start() {
         rich.setAutoSynch(true);
+        DiscordRPC.discordUpdatePresence(rich);
     }
 
 }
