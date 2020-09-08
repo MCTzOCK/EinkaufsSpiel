@@ -5,6 +5,8 @@ import net.craftions.game.main.Main;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MainMenu extends Screen{
 
@@ -31,6 +33,15 @@ public class MainMenu extends Screen{
         b0.setBounds(((int)(this.f.getWidth() - (this.f.getWidth() / 1.5))), ((int) (this.f.getHeight() - (this.f.getHeight() / 5.1))), ((int) (this.f.getWidth() / 3)), ((int) (this.f.getHeight() / 10)));
         Integer s0 = b0.getHeight() / 3;
         b0.setFont(new Font("X-Files", 0, s0));
+
+        b0.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                f.setVisible(false);
+                Ingame i = new Ingame();
+                i.init();
+            }
+        });
+
         this.f.add(b0);
         this.f.add(l0);
         this.f.setVisible(true);
