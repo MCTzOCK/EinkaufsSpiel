@@ -1,24 +1,90 @@
 package de.feja111.game;
 
-import net.arikia.dev.drpc.DiscordEventHandlers;
-import net.arikia.dev.drpc.DiscordRPC;
-import net.arikia.dev.drpc.DiscordRichPresence;
+
+import com.github.psnrigner.discordrpcjava.*;
+
+import java.util.Scanner;
+
 
 public class DrPC {
-    //public static DiscordRichPresence rich = new DiscordRichPresence.Builder("fwhf").setDetails("details").build();
 
-    /*
-    public static void start() {
-        DiscordRPC.discordInitialize("752562436871159844", null, true);
-        rich.setAutoSynch(true);
-        DiscordRPC.discordUpdatePresence(rich);
-    }
-     */
-    public static void startup(){
-        DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler((user) -> {
-            System.out.println("Welcome " + user.username + "#" + user.discriminator + "!");
-        }).build();
-        DiscordRPC.discordInitialize("752562436871159844", handlers, true);
+    public static DiscordRpc discordRpc = new DiscordRpc();
+
+    public static void startup() {
+
+
+        DiscordEventHandler discordEventHandler = new DiscordEventHandler() {
+            @Override
+            public void ready() {
+                System.err.println("READY");
+            }
+
+
+            @Override
+            public void disconnected(ErrorCode errorCode, String message) {
+                System.err.println("DISCONNECTED : " + errorCode + " " + message);
+            }
+
+            @Override
+            public void errored(ErrorCode errorCode, String message) {
+                System.err.println("ERRORED : " + errorCode + " " + message);
+            }
+
+            @Override
+            public void joinGame(String joinSecret) {
+                System.err.println("JOIN GAME : " + joinSecret);
+            }
+
+            @Override
+            public void spectateGame(String spectateSecret) {
+                System.err.println("SPECTATE GAME : " + spectateSecret);
+            }
+
+
+            @Override
+            public void joinRequest(DiscordJoinRequest joinRequest) {
+                System.err.println("JOIN REQUEST : " + joinRequest);
+            }
+        };
+
+        try {
+            discordRpc.init("752562436871159844", discordEventHandler, true, null);
+
+            Thread.sleep(5000L);
+            discordRpc.runCallbacks();
+
+            long start = System.currentTimeMillis() / 1000L;
+            long end = System.currentTimeMillis() / 1000L + 300L;
+
+            for (int i = 0; i < 60; ++i) {
+                DiscordRichPresence discordRichPresence = new DiscordRichPresence();
+                discordRichPresence.setState("Developing");
+                discordRichPresence.setDetails("Java | Discord RPC API");
+                discordRichPresence.setStartTimestamp(start);
+                discordRichPresence.setEndTimestamp(end);
+                discordRichPresence.setLargeImageKey("icon-large");
+                discordRichPresence.setSmallImageKey("icon-small");
+                discordRichPresence.setPartyId("ALONE");
+                discordRichPresence.setPartySize(1);
+                discordRichPresence.setPartyMax(3);
+                discordRichPresence.setMatchSecret("hello");
+                discordRichPresence.setJoinSecret("join");
+                discordRichPresence.setSpectateSecret("look");
+                discordRichPresence.setInstance(false);
+
+                discordRpc.updatePresence(discordRichPresence);
+
+                Thread.sleep(5000L);
+
+                discordRpc.runCallbacks();
+
+                Thread.sleep(5000L);
+            }
+        } catch (InterruptedException ignored) {
+        } finally {
+            discordRpc.shutdown();
+
+        }
     }
 
 }

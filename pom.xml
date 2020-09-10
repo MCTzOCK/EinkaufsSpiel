@@ -21,9 +21,9 @@
             <version>4.2.0_204</version>
         </dependency>
         <dependency>
-            <groupId>com.github.Vatuu</groupId>
-            <artifactId>discord-rpc</artifactId>
-            <version>1.6.2</version>
+            <groupId>com.github.psnrigner</groupId>
+            <artifactId>discord-rpc-java</artifactId>
+            <version>1.0.4</version>
         </dependency>
     </dependencies>
 
