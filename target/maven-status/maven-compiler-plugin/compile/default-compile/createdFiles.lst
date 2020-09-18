@@ -1,0 +1,12 @@
+net\craftions\game\Game.class
+net\craftions\game\gui\MainMenu.class
+net\craftions\game\gui\Loading.class
+de\mctzock\game\api\Account.class
+net\craftions\game\gui\Ingame.class
+net\craftions\game\gui\Screen.class
+de\feja111\game\DrPC.class
+de\mctzock\game\api\Language.class
+net\craftions\game\gui\MainMenu$1.class
+net\craftions\game\main\Main.class
+de\feja111\game\DrPC$1.class
+net\craftions\game\gui\Loading$1.class

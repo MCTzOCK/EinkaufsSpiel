@@ -17,7 +17,6 @@ public class Game {
 
     public void start() {
         MainMenu menu = new MainMenu();
-        DrPC.startup();
         menu.init();
     }
 
